@@ -1,10 +1,14 @@
-import './App.css'
+import Canvas from './canvas/Canvas'
+import Customizer from './pages/Customizer'
+import Home from './pages/Home'
 
 function App() {
   return (
-    <div>
-      <h1 className='head-text'>Hello</h1>
-    </div>
+    <main>
+      <Home />
+      <Canvas />
+      <Customizer />
+    </main>
   )
 }
 
