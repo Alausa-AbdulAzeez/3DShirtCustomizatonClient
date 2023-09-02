@@ -33,7 +33,18 @@ const Customizer = () => {
 
     try {
       setGeneratingImg(true);
-      const response = await fetch("http://localhost:5000/api/v1/dalle", {
+      let url;
+      let nodeEnvironment = process.env.NODE_ENV;
+
+      if (nodeEnvironment === "development") {
+        url = "http://localhost:5000/api/v1/dalle";
+      } else if (nodeEnvironment === "production") {
+        url =
+          "https://threedshirtcustomizationserver.onrender.com/api/v1/dalle";
+      } else {
+        url = "http://localhost:5000/api/v1/dalle";
+      }
+      const response = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
